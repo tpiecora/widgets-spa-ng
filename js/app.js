@@ -22,3 +22,8 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
 
     $locationProvider.html5Mode(true);
 }]);
+
+app.constant('api', {
+    'url': 'http://spa.tglrw.com',
+    'port': '4000'
+});
