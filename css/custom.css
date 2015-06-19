@@ -1,0 +1,8 @@
+.avatar {
+    min-height: 200px;
+    min-width: 200px;
+    display: inline;
+    margin: 20px;
+    width: 20%;
+}
+

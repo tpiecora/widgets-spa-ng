@@ -8,9 +8,4 @@ angular.module('app')
             .then(function (response) {
                 $scope.widgets = response.data;
             });
-
-            //TODO - loading spinner
-        if ($scope.users) {
-            console.log($scope.users);
-        }
     }]);

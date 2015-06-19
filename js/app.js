@@ -9,18 +9,38 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
             templateUrl: 'partials/dashboard.html',
             controller: 'DashboardController'
         })
-        .state('user', {
-            url: '/user',
-            templateUrl: 'partials/user.html',
+
+        .state('users', {
+            url: '/users',
+            templateUrl: 'partials/users.html',
             controller: 'UserController'
         })
-        .state('widget', {
-            url: '/widget',
-            templateUrl: 'partials/widget.html',
-            controller: 'WidgetController'
+        .state('user', {
+            url: '/users/:id',
+            templateUrl: 'partials/user.html',
+            resolve: {
+                // retrieves the selected user from the API and stores so we can produce breadcrumb
+                selected: function($stateParams, Users) {
+                    return Users.getOne($stateParams.id)
+                        .then(function (response) {
+                            Users.setSelected(response.data);
+                            return response.data;
+                        });
+                }
+            },
+            controller: function ($scope, $stateParams, selected) {
+                $scope.user = selected;
+
+            }
         })
 
-    $locationProvider.html5Mode(true);
+        .state('widgets', {
+            url: '/widgets',
+            templateUrl: 'partials/widgets.html',
+            controller: 'WidgetController'
+        });
+
+    //$locationProvider.html5Mode(true);
 }]);
 
 app.constant('api', {

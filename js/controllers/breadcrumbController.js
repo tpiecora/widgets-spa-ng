@@ -1,15 +1,19 @@
 angular.module('app')
-    .controller('BreadcrumbController', ['$rootScope', '$scope', function ($rootScope, $scope) {
+    .controller('BreadcrumbController', ['$rootScope', '$stateParams', '$scope', 'Users', function ($rootScope, $stateParams, $scope, Users) {
         $rootScope.$on('$stateChangeSuccess',
         function(event, toState, toParams, fromState, fromParams) {
             switch (toState.name) {
                 case 'dashboard':
                     $scope.crumb = 'Dashboard';
                     break;
-                case 'user':
+                case 'users':
                     $scope.crumb = 'Users';
                     break;
-                case 'widget':
+                case 'user':
+                    var userName = Users.getSelected().name;
+                    $scope.crumb = 'Users / ' + (userName || 'Unknown User');
+                    break;
+                case 'widgets':
                     $scope.crumb = 'Widgets';
                     break;
             }
