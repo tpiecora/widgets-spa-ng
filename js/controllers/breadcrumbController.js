@@ -1,7 +1,8 @@
 angular.module('app')
-    .controller('BreadcrumbController', ['$rootScope', '$stateParams', '$scope', 'Users', 'Widgets', function ($rootScope, $stateParams, $scope, Users, Widgets) {
+    .controller('BreadcrumbController', ['$rootScope', '$stateParams', '$scope', 'Users', 'Widgets', '$sce', function ($rootScope, $stateParams, $scope, Users, Widgets, $sce) {
         $rootScope.$on('$stateChangeSuccess',
         function(event, toState, toParams, fromState, fromParams) {
+            var widgetName, widgetId, userName;
             switch (toState.name) {
                 case 'dashboard':
                     $scope.crumb = 'Dashboard';
@@ -10,19 +11,20 @@ angular.module('app')
                     $scope.crumb = 'Users';
                     break;
                 case 'user':
-                    var userName = Users.getSelected().name;
-                    $scope.crumb = 'Users / ' + (userName || 'Unknown User');
+                    userName = Users.getSelected().name;
+                    $scope.crumb = $sce.trustAsHtml('<a href="#/users">Users</a> / ' + (userName || 'Unknown User'));
                     break;
                 case 'widgets':
                     $scope.crumb = 'Widgets';
                     break;
                 case 'widget':
-                    var widgetName = Widgets.getSelected().name;
-                    $scope.crumb = 'Widgets / ' + (widgetName || 'Unknown Widget');
+                    widgetName = Widgets.getSelected().name;
+                    $scope.crumb = $sce.trustAsHtml('<a href="#/widgets">Widgets</a> / ' + (widgetName || 'Unknown Widget'));
                     break;
                 case 'editWidget':
-                    var widgetName = Widgets.getSelected().name;
-                    $scope.crumb = 'Widgets / ' + (widgetName || 'Unknown Widget') + ' / Edit';
+                    widgetName = Widgets.getSelected().name;
+                    widgetId = Widgets.getSelected().id;
+                    $scope.crumb = $sce.trustAsHtml('<a href="#/widgets" ui-sref="widgets">Widgets</a> / <a href="#/widgets/' + widgetId + '">' + (widgetName || 'Unknown Widget') + '</a> / Edit');
             }
         })
     }]);
