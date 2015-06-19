@@ -20,7 +20,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
             templateUrl: 'partials/user.html',
             resolve: {
                 // retrieves the selected user from the API and stores so we can produce breadcrumb
-                selected: function($stateParams, Users) {
+                selected: function ($stateParams, Users) {
                     return Users.getOne($stateParams.id)
                         .then(function (response) {
                             Users.setSelected(response.data);
@@ -38,7 +38,26 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
             url: '/widgets',
             templateUrl: 'partials/widgets.html',
             controller: 'WidgetController'
+        })
+        .state('widget', {
+            url: '/widgets/:id',
+            templateUrl: 'partials/widget.html',
+            resolve: {
+                // retrieves the selected user from the API and stores so we can produce breadcrumb
+                selected: function ($stateParams, Widgets) {
+                    return Widgets.getOne($stateParams.id)
+                        .then(function (response) {
+                            Widgets.setSelected(response.data);
+                            return response.data;
+                        });
+                }
+            },
+            controller: function ($scope, $stateParams, selected) {
+                $scope.widget = selected;
+
+            }
         });
+
 
     //$locationProvider.html5Mode(true);
 }]);

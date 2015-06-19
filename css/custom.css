@@ -6,3 +6,7 @@
     width: 20%;
 }
 
+.search, .create {
+    display: inline;
+    margin-left: 10px;
+}

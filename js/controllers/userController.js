@@ -1,6 +1,6 @@
 angular.module('app')
-    .controller('UserController', ['$scope', 'Users', '$state', '$stateParams', function ($scope, Users, $state , $stateParams) {
-        $scope.users = {};
+    .controller('UserController', ['$scope', 'Users', '$state', function ($scope, Users, $state) {
+        $scope.users = [];
 
         // Check to see if we fetched user data yet, if not, fetch it
         if (Users.data().length) {

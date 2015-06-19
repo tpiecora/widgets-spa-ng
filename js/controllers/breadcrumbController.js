@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('BreadcrumbController', ['$rootScope', '$stateParams', '$scope', 'Users', function ($rootScope, $stateParams, $scope, Users) {
+    .controller('BreadcrumbController', ['$rootScope', '$stateParams', '$scope', 'Users', 'Widgets', function ($rootScope, $stateParams, $scope, Users, Widgets) {
         $rootScope.$on('$stateChangeSuccess',
         function(event, toState, toParams, fromState, fromParams) {
             switch (toState.name) {
@@ -15,6 +15,10 @@ angular.module('app')
                     break;
                 case 'widgets':
                     $scope.crumb = 'Widgets';
+                    break;
+                case 'widget':
+                    var widgetName = Widgets.getSelected().name;
+                    $scope.crumb = 'Widgets / ' + (widgetName || 'Unknown Widget');
                     break;
             }
         })
