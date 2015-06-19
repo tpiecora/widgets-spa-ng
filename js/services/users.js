@@ -1,9 +1,9 @@
 angular.module('app')
     .factory('Users', ['$http', 'api', function ($http, api) {
         // Build our base url and define our storage objects
-        var baseUrl = api.url + ':' + api.port + '/';
-        var userData = [];
-        var currentUser = {};
+        var baseUrl = api.url + ':' + api.port + '/',
+            userData = [],
+            currentUser = {};
 
         return {
             // When a user is clicked on it stores it here

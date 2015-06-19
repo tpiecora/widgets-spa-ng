@@ -1,9 +1,9 @@
 angular.module('app')
     .factory('Widgets', ['$http', 'api', function ($http, api) {
         // Build our base url and define our storage objects
-        var baseUrl = api.url + ':' + api.port + '/';
-        var widgetData = [];
-        var currentWidget = {};
+        var baseUrl = api.url + ':' + api.port + '/',
+            widgetData = [],
+            currentWidget = {};
 
         return {
             // When a widget is clicked on it stores it here
