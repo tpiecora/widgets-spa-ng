@@ -1,6 +1,6 @@
 angular.module('app')
     .controller('WidgetCreateController', ['$scope', 'Widgets', '$state', function ($scope, Widgets, $state) {
-        $scope.widget = {};
+        $scope.theWidget = {};
         console.log('create widget');
 
         $scope.saveWidget = function(widget) {

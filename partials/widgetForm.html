@@ -12,17 +12,18 @@
                 <div class="pull-right">
                     <span class="success" ng-if="success"><strong>Data Saved</strong></span>
                     <span class="error" ng-if="error"><strong>Save Failed</strong></span>
-                    <button class="btn btn-sm btn-info edit" ng-click="saveWidget(widget)"><i class="fa fa-save fa-2x"></i></button>
+                    <button ng-disabled="theWidget.$invalid" class="btn btn-sm btn-info edit" ng-click="saveWidget(widget)"><i class="fa fa-save fa-2x"></i></button>
                 </div>
             </div>
 
             <div class="widget-body">
-                <form class="form-horizontal">
+                <form name="theWidget" class="form-horizontal">
 
                     <!-- Name-->
                     <div class="controls">
                         Name
-                        <input id="widget-name" ng-model="widget.name" name="widget-name" type="text" placeholder="foo-bar" class="input-sm form-control">
+                        <input id="widget-name" ng-model="widget.name" name="name" type="text" placeholder="foo-bar" class="input-sm form-control" required>
+                        <span class="error" ng-if="theWidget.name.$dirty && theWidget.name.$error.required">Please enter a name</span>
                     </div>
 
                     <!-- Price -->
@@ -30,14 +31,15 @@
                         <div class="input-prepend">
                             Price
                             <span class="add-on">$</span>
-                            <input id="widget-price" ng-model="widget.price" name="widget-price" class="input-sm form-control" placeholder="0.00" type="text">
+                            <input id="widget-price" ng-change="checkPrice()" ng-model="widget.price" name="price" class="input-sm form-control" placeholder="0.00" type="text" required>
+                            <span class="error" ng-if="theWidget.price.$dirty && theWidget.price.$error.required || badPrice">Please enter a valid price</span>
                         </div>
                     </div>
 
                     <!-- Color -->
                     <div class="controls">
                         Color
-                        <select id="widget-color" ng-model="widget.color" name="widget-color" class="input-sm form-control">
+                        <select id="widget-color" ng-model="widget.color" name="color" class="input-sm form-control" required>
                             <option>red</option>
                             <option>blue</option>
                             <option>purple</option>
@@ -50,6 +52,7 @@
                             <option>speckled</option>
                             <option>depends on the viewing angle</option>
                         </select>
+                        <span class="error" ng-if="theWidget.color.$dirty && theWidget.color.$error.required">Please select a color</span>
                     </div>
 
                     <!-- Melts -->
@@ -61,7 +64,8 @@
                     <!-- Inventory -->
                     <div class="controls">
                         Inventory
-                        <input id="widget-count" ng-model="widget.inventory" name="widget-count" type="text" placeholder="#?" class="input-sm form-control">
+                        <input id="widget-count" ng-model="widget.inventory" name="count" type="number" placeholder="#?" class="input-sm form-control" required>
+                        <span class="error" ng-if="theWidget.count.$dirty && theWidget.count.$error.required || theWidget.count.$error.number">Please enter a valid quantity</span>
                     </div>
                 </form>
             </div><!-- End Widget body -->

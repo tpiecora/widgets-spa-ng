@@ -3,6 +3,8 @@ angular.module('app')
         $rootScope.$on('$stateChangeSuccess',
         function(event, toState, toParams, fromState, fromParams) {
             var widgetName, widgetId, userName;
+
+            // determine state and build breadcrumb
             switch (toState.name) {
                 case 'dashboard':
                     $scope.crumb = 'Dashboard';
@@ -25,6 +27,10 @@ angular.module('app')
                     widgetName = Widgets.getSelected().name;
                     widgetId = Widgets.getSelected().id;
                     $scope.crumb = $sce.trustAsHtml('<a href="#/widgets" ui-sref="widgets">Widgets</a> / <a href="#/widgets/' + widgetId + '">' + (widgetName || 'Unknown Widget') + '</a> / Edit');
+                    break;
+                case 'createWidget':
+                    $scope.crumb = 'Create Widget';
+                    break;
             }
         })
     }]);
