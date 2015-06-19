@@ -1,16 +1,20 @@
 angular.module('app')
     .factory('Users', ['$http', 'api', function ($http, api) {
+        // Build our base url and define our storage objects
         var baseUrl = api.url + ':' + api.port + '/';
         var userData = [];
         var currentUser = {};
-        // TODO - loading spinner
+
         return {
+            // When a user is clicked on it stores it here
             setSelected: function(user) {
                 currentUser = user;
             },
+            // When we want to view a selected user it pulls the data from here
             getSelected: function() {
                 return currentUser;
             },
+            // Retrieve users array from here once our getAll returns
             data: function() {
                 return userData;
             },
@@ -21,8 +25,8 @@ angular.module('app')
                         return data;
                     });
             },
+            // Our user view fetches the specific user from the API
             getOne: function (id) {
-                // TODO - error handling
                 return $http.get(baseUrl + 'users/' + id)
                     .success(function (data) {
                         currentUser = data;

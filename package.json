@@ -1,9 +1,24 @@
 {
-  "name"         : "node-server",
-  "version"      : "0.0.0",
-  "description"  : "Simple server.",
-  "main"         : "server.js",
-  "dependencies" : {
-    "express"    : "~4.7.2"
+  "name": "widgets-spa-ng",
+  "version": "0.1.0",
+  "description": "Simple server.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tpiecora/widgets-spa-ng.git"
+  },
+  "author": "",
+  "license": "N/A",
+  "homepage": "https://github.com/tpiecora/widgets-spa-ng",
+  "bugs": {
+    "url": "https://github.com/tpiecora/widgets-spa-ng/issues"
+  },
+  "dependencies": {
+    "serve-static": "^1.10.0",
+    "finalhandler": "^0.4.0"
   }
 }

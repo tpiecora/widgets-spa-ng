@@ -34,7 +34,6 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
             },
             controller: function ($scope, $stateParams, selected) {
                 $scope.user = selected;
-
             }
         })
         .state('widgets', {

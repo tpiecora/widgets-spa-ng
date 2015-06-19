@@ -1,52 +1,52 @@
 <!-- Tables -->
 <div class="row">
 
-  <!-- Widget listing -->
-  <div class="col-lg-12">
-    <div class="widget">
-      <div class="widget-header">Widgets
-        <div class="create pull-right">
-          <button class="btn btn-sm btn-info" ui-sref="createWidget">+ Create</button>
+    <!-- Widget listing -->
+    <div class="col-lg-12">
+        <div class="widget">
+            <div class="widget-header">Widgets
+                <div class="create pull-right">
+                    <button class="btn btn-sm btn-info" ui-sref="createWidget">+ Create</button>
+                </div>
+                <div class="search pull-right">
+                    <input ng-model="widgetFilter.name" type="text" class="form-control input-sm">
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th class="text-center">ID</th>
+                        <th>Name</th>
+                        <th>Color</th>
+                        <th>Price</th>
+                        <th>Melts?</th>
+                        <th>Inventory</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="widget in widgets | filter: widgetFilter as results" ng-click="viewWidget(widget.id)">
+                        <td class="text-center">{{widget.id}}</td>
+                        <td>{{widget.name}}</td>
+                        <td>{{widget.color}}</td>
+                        <td>{{'$' + widget.price}}</td>
+                        <td>{{widget.melts?'yes':'no'}}</td>
+                        <td>{{widget.inventory}}</td>
+                    </tr>
+                    <tr ng-if="results.length === 0 && ! widgetFetching">
+                        <td></td>
+                        <td>No matches found...</td>
+                        <td></td>
+                    </tr>
+                    <tr ng-if="widgetFetching">
+                        <td></td>
+                        <td><i class="fa fa-spinner fa-spin"></i> Fetching widget data...</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="search pull-right">
-          <input ng-model="widgetFilter.name" type="text" class="form-control input-sm">
-        </div>
-      </div>
-      <div class="table-responsive">
-        <table class="table table-hover">
-          <thead>
-          <tr>
-            <th class="text-center">ID</th>
-            <th>Name</th>
-            <th>Color</th>
-            <th>Price</th>
-            <th>Melts?</th>
-            <th>Inventory</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr ng-repeat="widget in widgets | filter: widgetFilter as results" ng-click="viewWidget(widget.id)">
-            <td class="text-center">{{widget.id}}</td>
-            <td>{{widget.name}}</td>
-            <td>{{widget.color}}</td>
-            <td>{{'$' + widget.price}}</td>
-            <td>{{widget.melts?'yes':'no'}}</td>
-            <td>{{widget.inventory}}</td>
-          </tr>
-          <tr ng-if="results.length === 0 && ! widgetFetching">
-            <td></td>
-            <td>No matches found...</td>
-            <td></td>
-          </tr>
-          <tr ng-if="widgetFetching">
-              <td></td>
-              <td><i class="fa fa-spinner fa-spin"></i> Fetching widget data...</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div><!-- End Widgets -->
+    </div><!-- End Widgets -->
 
 </div><!-- End Row -->
 

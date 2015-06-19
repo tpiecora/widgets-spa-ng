@@ -7,7 +7,7 @@ var serve = serveStatic(__dirname, {'index': ['index.html']});
 
 // Create server
 var server = http.createServer(function (req, res) {
-    var done = finalhandler(req, res)
+    var done = finalhandler(req, res);
     serve(req, res, done)
 });
 

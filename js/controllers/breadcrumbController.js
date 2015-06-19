@@ -4,7 +4,7 @@ angular.module('app')
         function(event, toState, toParams, fromState, fromParams) {
             var widgetName, widgetId, userName;
 
-            // determine state and build breadcrumb
+            // Determine state and build breadcrumb
             switch (toState.name) {
                 case 'dashboard':
                     $scope.crumb = 'Dashboard';

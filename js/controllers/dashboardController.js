@@ -1,8 +1,10 @@
 angular.module('app')
     .controller('DashboardController', ['$scope', 'Users', 'Widgets', '$state', function ($scope, Users, Widgets, $state) {
+        // Initialize loading spinners
         $scope.userFetching = true;
         $scope.widgetFetching = true;
 
+        // Initial data fetch
         Users.getAll()
             .then(function (response) {
                 $scope.users = response.data;
@@ -14,13 +16,12 @@ angular.module('app')
                 $scope.widgetFetching = false;
             });
 
-        // change state to the selected widget
+        // Change state to the selected widget
         $scope.viewWidget = function (id) {
-            console.log(id);
             $state.go('widget', {id: id});
         };
 
-        // change state to the selected user
+        // Change state to the selected user
         $scope.viewUser = function (id) {
             $state.go('user', {id: id});
         };
