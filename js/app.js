@@ -52,11 +52,19 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
                         });
                 }
             },
-            controller: function ($scope, $stateParams, selected) {
-                $scope.widget = selected;
+            controller: 'WidgetViewController'
+        })
+        .state('createWidget', {
+            url: '/create-widget',
+            templateUrl: 'partials/widgetForm.html',
+            controller: 'WidgetCreateController'
+        })
+        .state('editWidget', {
+            url: '/widgets/:id/edit',
+            templateUrl: 'partials/widgetForm.html',
+            controller: 'WidgetEditController'
+        })
 
-            }
-        });
 
 
     //$locationProvider.html5Mode(true);

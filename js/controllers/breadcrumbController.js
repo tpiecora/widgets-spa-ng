@@ -20,6 +20,9 @@ angular.module('app')
                     var widgetName = Widgets.getSelected().name;
                     $scope.crumb = 'Widgets / ' + (widgetName || 'Unknown Widget');
                     break;
+                case 'editWidget':
+                    var widgetName = Widgets.getSelected().name;
+                    $scope.crumb = 'Widgets / ' + (widgetName || 'Unknown Widget') + ' / Edit';
             }
         })
     }]);

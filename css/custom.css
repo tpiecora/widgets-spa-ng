@@ -10,3 +10,23 @@
     display: inline;
     margin-left: 10px;
 }
+
+button.edit {
+    padding: 4px;
+    max-width: 33px;
+    max-height: 33px;
+}
+
+.success {
+    color: green;
+    margin-right: 20px;
+}
+
+.error {
+    color: red;
+    margin-right: 20px;
+}
+
+.controls {
+    margin-top: 10px;
+}

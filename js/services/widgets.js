@@ -28,6 +28,24 @@ angular.module('app')
                         currentWidget = data;
                         return data;
                     });
+            },
+            newWidget: function(widget) {
+                return $http.post(baseUrl + 'widgets', widget)
+                    .success(function(data, status) {
+                        return status;
+                    })
+                    .error(function(data, status) {
+                        return status;
+                    })
+            },
+            updateWidget: function(widget) {
+                return $http.put(baseUrl + 'widgets/' + widget.id, widget)
+                    .success(function(data, status) {
+                        return status;
+                    })
+                    .error(function(data, status) {
+                        return status;
+                    })
             }
         }
     }]);
