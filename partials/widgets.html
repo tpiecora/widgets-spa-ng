@@ -33,10 +33,14 @@
             <td>{{widget.melts?'yes':'no'}}</td>
             <td>{{widget.inventory}}</td>
           </tr>
-          <tr ng-if="results.length === 0">
+          <tr ng-if="results.length === 0 && ! widgetFetching">
             <td></td>
             <td>No matches found...</td>
             <td></td>
+          </tr>
+          <tr ng-if="widgetFetching">
+              <td></td>
+              <td><i class="fa fa-spinner fa-spin"></i> Fetching widget data...</td>
           </tr>
           </tbody>
         </table>

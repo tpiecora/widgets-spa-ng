@@ -34,3 +34,7 @@ button.edit {
 a:hover, a {
     text-decoration: none;
 }
+
+.clickable {
+    cursor: pointer;
+}

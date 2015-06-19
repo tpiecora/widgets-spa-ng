@@ -22,10 +22,14 @@
             <td>{{user.name}}</td>
             <td><img ng-src="{{user.gravatar}}"></td>
           </tr>
-          <tr ng-if="results.length === 0">
+          <tr ng-if="results.length === 0 && !userFetching">
             <td></td>
             <td>No matches found...</td>
             <td></td>
+          </tr>
+          <tr ng-if="userFetching">
+            <td></td>
+            <td><i class="fa fa-spinner fa-spin"></i> Fetching user data...</td>
           </tr>
           </tbody>
         </table>

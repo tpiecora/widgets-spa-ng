@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('WidgetCreateController', ['$scope', 'Widgets', '$state', function ($scope, Widgets, $state) {
+    .controller('WidgetCreateController', ['$scope', 'Widgets', '$state', '$timeout', function ($scope, Widgets, $state, $timeout) {
         $scope.theWidget = {};
         console.log('create widget');
 

@@ -1,7 +1,7 @@
 <!-- Dashboard Boxes -->
 <div class="row">
     <div class="col-lg-3 col-md-6 col-xs-12">
-        <div class="widget">
+        <div class="widget clickable" ui-sref="users">
             <div class="widget-header">
                 <div class="widget-icon green pull-left">
                     <i class="fa fa-users"></i>
@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="col-lg-3 col-md-6 col-xs-12">
-        <div class="widget">
+        <div class="widget clickable" ui-sref="widgets">
             <div class="widget-header">
                 <div class="widget-icon green pull-left">
                     <i class="fa fa-users"></i>
@@ -33,7 +33,7 @@
                 <div class="pull-right"><input ng-model="userFilter.name" type="text" class="form-control input-sm"></div>
             </div>
             <div class="table-responsive">
-                <table class="table">
+                <table class="table table-hover">
                     <thead>
                     <tr>
                         <th class="text-center">ID</th>
@@ -41,13 +41,17 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="user in users | filter: userFilter as userResults">
+                    <tr ng-repeat="user in users | filter: userFilter as userResults" ng-click="viewUser(user.id)">
                         <td class="text-center">{{user.id}}</td>
                         <td>{{user.name}}</td>
                     </tr>
                     <tr ng-if="userResults.length === 0">
                         <td></td>
                         <td>No matches found...</td>
+                    </tr>
+                    <tr ng-if="userFetching">
+                        <td></td>
+                        <td><i class="fa fa-spinner fa-spin"></i> Fetching user data...</td>
                     </tr>
                     </tbody>
                 </table>
@@ -62,7 +66,7 @@
                 <div class="pull-right"><input ng-model="widgetFilter.name" type="text" class="form-control input-sm"></div>
             </div>
             <div class="table-responsive">
-                <table class="table">
+                <table class="table table-hover">
                     <thead>
                     <tr>
                         <th class="text-center">ID</th>
@@ -70,13 +74,17 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="widget in widgets | filter: widgetFilter as widgetResults">
+                    <tr ng-repeat="widget in widgets | filter: widgetFilter as widgetResults" ng-click="viewWidget(widget.id)">
                         <td class="text-center">{{widget.id}}</td>
                         <td>{{widget.name}}</td>
                     </tr>
                     <tr ng-if="widgetResults.length === 0">
                         <td></td>
                         <td>No matches found...</td>
+                    </tr>
+                    <tr ng-if="widgetFetching">
+                        <td></td>
+                        <td><i class="fa fa-spinner fa-spin"></i> Fetching widget data...</td>
                     </tr>
                     </tbody>
                 </table>
