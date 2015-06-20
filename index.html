@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="components/rdash-ui/dist/css/rdash.min.css">
     <link rel="stylesheet" type="text/css" href="css/custom.css">
-
+    <link rel="stylesheet" type="text/css" href="css/anim-in-out.css">
 </head>
 <body>
 <div id="page-wrapper" class="open">
@@ -24,7 +24,9 @@
             <!-- End Header Bar -->
 
             <!-- View -->
-            <div ui-view></div>
+            <div class="ui-view-container">
+                <div ui-view class="anim-in-out anim-fade" data-anim-speed="300"></div>
+            </div>
             <!-- End Views -->
 
         </div><!-- End Page Content -->
@@ -36,6 +38,8 @@
 <script src="components/angular.min.js"></script>
 <script src="components/angular-ui-router.min.js"></script>
 <script src="components/angular-sanitize.min.js"></script>
+<script src="components/angular-animate.min.js"></script>
+<script src="components/anim-in-out.js"></script>
 <!-- End Third Party Scripts -->
 
 <!-- App Scripts -->

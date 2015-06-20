@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.router', 'ngSanitize']);
+var app = angular.module('app', ['ui.router', 'ngSanitize', 'ngAnimate', 'anim-in-out']);
 
 app.constant('api', {
     'url': 'http://spa.tglrw.com',
